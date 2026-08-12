@@ -49,12 +49,13 @@
 
     <h2>Update or delete Courses</h2>
     <table class="table table-success table-stripped">
-      <thead>
+      <thead style="display: block">
         <tr>
           <th>ID</th>
-          <th>Fees</th>
-          <th>Duration</th>
-          <th>Action</th>
+          <th width="35%">Name</th>
+          <th width="35%">Fees</th>
+          <th width="15%">Duration</th>
+          <th width="15">Action</th>
         </tr>
       </thead>
       <tbody>
@@ -72,7 +73,7 @@
                 size="3"
                 value="{{ row[3] }}"
               />
-              <input type="submit" value="update"/>
+              <input type="submit" value="update" />
             </form>
           </td>
           <td>
@@ -82,6 +83,7 @@
             </form>
           </td>
         </tr>
+        {% endfor %}
       </tbody>
     </table>
   </body>
