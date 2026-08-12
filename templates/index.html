@@ -17,7 +17,7 @@
     ></script>
   </head>
   <body>
-    <h1 class="text-success text-align-center">GHost Academy Courses</h1>
+    <h1 class="text-success text-center">GHost Academy Courses</h1>
 
     <table class="table table-success table-stripped">
       <thead>
@@ -37,6 +37,51 @@
           <td>{{ row[3] }}</td>
         </tr>
         {% endfor %}
+      </tbody>
+    </table>
+    <h2 class="text-success text-center">Add New Course</h2>
+    <form action="/create" method="POST">
+      <input type="name" name="name" placeholder="Name" />
+      <input type="fees" name="fees" placeholder="Fees" />
+      <input type="duration" name="duration" placeholder="Duration" />
+      <input type="submit" value="Add" />
+    </form>
+
+    <h2>Update or delete Courses</h2>
+    <table class="table table-success table-stripped">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Fees</th>
+          <th>Duration</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for row in data %}
+        <tr>
+          <td>
+            <form action="/update" method="post">
+              <label for="">{{ row[0] }}</label>
+              <input type="hidden" name="id" value="{{ row[0] }}" />
+              <input type="text" name="name" value="{{ row[1] }}" />
+              <input type="text" name="fees" value="{{ row[2] }}" />
+              <input
+                type="text"
+                name="duration"
+                size="3"
+                value="{{ row[3] }}"
+              />
+              <input type="submit" value="update"/>
+            </form>
+          </td>
+          <td>
+            <form action="/delete" method="post">
+              <input type="hidden" name="id" value="{{ row[0] }}" />
+              <input type="submit" value="delete" />
+            </form>
+          </td>
+        </tr>
       </tbody>
     </table>
   </body>
